@@ -48,15 +48,32 @@ public class Program {
 				
 				list.add(new UsedProduct(name, price, manufatureDate));
 			}
+			else {
+				sc.nextLine();
+				System.out.print("Nome: ");
+				String name =  sc.nextLine();
+				System.out.print("Preço: ");
+				double price =  sc.nextDouble();
+				System.out.println("Custom free:  ");
+				double customsFree = sc.nextDouble();
+				
+				
+				list.add(new ImportedProduct(name, price, customsFree));
+			}
 		}
-		System.out.println("products");
+		System.out.println("PRICE TAGS:");
 		for(Product item : list) {
 			if(item instanceof UsedProduct) {
 				UsedProduct usedItem = (UsedProduct) item;
-				System.out.println(usedItem.getName()+ " " + usedItem.getPrice() +" " + usedItem.getManufaturedDate().format(dtf) );
+				System.out.println(usedItem.getName()+ " (used)" + String.format(" $ %.2f", usedItem.getPrice())  + " (Manufactured Date: " + usedItem.getManufaturedDate().format(dtf)+")");
 			}
-			else {
-				System.out.println(item.getName()+ " "+ item.getPrice());
+			else if(item instanceof ImportedProduct) {
+				ImportedProduct importedItem = (ImportedProduct) item;
+				System.out.println(importedItem.getName() + String.format(" $ %.2f", importedItem.totalPrice()) + String.format(" (Custom Free: Custom Free: $ %.2f)", importedItem.getCustomsFree()));
+				
+			}
+			else  {
+				System.out.println(item.getName()+ String.format(" $ %.2f", item.getPrice()));
 			}
 		}
 

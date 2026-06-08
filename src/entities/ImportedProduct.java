@@ -20,7 +20,7 @@ public class ImportedProduct extends Product{
 		this.customsFree = customsFree;
 	}
 	public Double totalPrice() {
-		return price + customsFree;
+		return super.price + customsFree;
 	}
 
 	@Override
