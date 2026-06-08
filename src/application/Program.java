@@ -27,21 +27,15 @@ public class Program {
 			System.out.println("Produt #" + i +" data:" );
 			System.out.println("Common, used or imported (c/u/i)? ");
 			char item = sc.next().charAt(0);
+			sc.nextLine();
+			System.out.print("Nome: ");
+			String name =  sc.nextLine();
+			System.out.print("Preço: ");
+			Double price =  sc.nextDouble();
 			if(item == 'c') {
-				sc.nextLine();
-				System.out.print("Nome: ");
-				String name =  sc.nextLine();
-				System.out.print("Preço: ");
-				Double price =  sc.nextDouble();
-				
 				list.add(new Product(name, price));
 			}
 			else if(item == 'u') {
-				sc.nextLine();
-				System.out.print("Nome: ");
-				String name =  sc.nextLine();
-				System.out.print("Preço: ");
-				Double price =  sc.nextDouble();
 				System.out.println("Manufacture date: ");
 				String date = sc.next();
 				LocalDate manufatureDate = LocalDate.parse(date, dtf);
@@ -49,15 +43,9 @@ public class Program {
 				list.add(new UsedProduct(name, price, manufatureDate));
 			}
 			else {
-				sc.nextLine();
-				System.out.print("Nome: ");
-				String name =  sc.nextLine();
-				System.out.print("Preço: ");
-				double price =  sc.nextDouble();
 				System.out.println("Custom fee:  ");
 				double customsFee = sc.nextDouble();
-				
-				
+			
 				list.add(new ImportedProduct(name, price, customsFee));
 			}
 		}
