@@ -54,29 +54,19 @@ public class Program {
 				String name =  sc.nextLine();
 				System.out.print("Preço: ");
 				double price =  sc.nextDouble();
-				System.out.println("Custom free:  ");
-				double customsFree = sc.nextDouble();
+				System.out.println("Custom fee:  ");
+				double customsFee = sc.nextDouble();
 				
 				
-				list.add(new ImportedProduct(name, price, customsFree));
+				list.add(new ImportedProduct(name, price, customsFee));
 			}
 		}
 		System.out.println("PRICE TAGS:");
 		for(Product item : list) {
-			if(item instanceof UsedProduct) {
-				UsedProduct usedItem = (UsedProduct) item;
-				System.out.println(usedItem.getName()+ " (used)" + String.format(" $ %.2f", usedItem.getPrice())  + " (Manufactured Date: " + usedItem.getManufaturedDate().format(dtf)+")");
-			}
-			else if(item instanceof ImportedProduct) {
-				ImportedProduct importedItem = (ImportedProduct) item;
-				System.out.println(importedItem.getName() + String.format(" $ %.2f", importedItem.totalPrice()) + String.format(" (Custom Free: Custom Free: $ %.2f)", importedItem.getCustomsFree()));
-				
-			}
-			else  {
-				System.out.println(item.getName()+ String.format(" $ %.2f", item.getPrice()));
-			}
+			System.out.println(item.priceTag());
 		}
-
+		
+		sc.close();
 	}
 
 }

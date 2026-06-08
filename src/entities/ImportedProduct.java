@@ -1,7 +1,7 @@
 package entities;
 
 public class ImportedProduct extends Product{
-	private Double customsFree;
+	private Double customsFee;
 	
 	public ImportedProduct() {
 		super();
@@ -9,23 +9,23 @@ public class ImportedProduct extends Product{
 
 	public ImportedProduct(String name, Double price, Double customsFree) {
 		super(name, price);
-		this.customsFree = customsFree;
+		this.customsFee = customsFree;
 	}
 
 	public Double getCustomsFree() {
-		return customsFree;
+		return customsFee;
 	}
 
 	public void setCustomsFree(Double customsFree) {
-		this.customsFree = customsFree;
+		this.customsFee = customsFree;
 	}
 	public Double totalPrice() {
-		return super.price + customsFree;
+		return super.price + customsFee;
 	}
-
+	
 	@Override
-	public String toString() {
-		return "ImportedProduct [customsFree=" + customsFree + "]";
+	public String priceTag() {
+		return getName() + String.format(" $ %.2f",totalPrice()) + String.format(" (Custom Free: $ %.2f)", customsFee);
 	}
 	
 	

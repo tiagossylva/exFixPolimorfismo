@@ -2,7 +2,7 @@ package entities;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 
 public class UsedProduct extends Product{
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -26,9 +26,9 @@ public class UsedProduct extends Product{
 	}
 
 	@Override
-	public String toString() {
-		return "UsedProduct [manufaturedDate=" + manufaturedDate.format(dtf) + "]";
+	public String priceTag(){
+		return getName()+ " (used)" + String.format(" $ %.2f", getPrice())  + " (Manufactured Date: " + getManufaturedDate().format(dtf)+")";
 	}
 	
 	
-}
+	}
